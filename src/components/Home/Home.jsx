@@ -2,6 +2,7 @@ import React from 'react'
 import AboutUs from './AboutUs'
 import BestSellingCakes from './BestSellingCakes'
 import CakeCategoryTabs from './CakeCategoryTabs'
+import CakeOfTheMonth from './CakeOfTheMonth'
 import CustomerTestimonials from './CustomerTestimonials'
 import Hero from './hero'
 import NewsletterSignup from './NewsletterSignup'
@@ -19,6 +20,7 @@ function Home() {
         
         <WhyChooseUsCake/>
         <CustomerTestimonials/>
+        <CakeOfTheMonth/>
         <NewsletterSignup/>
     </div>
   )
