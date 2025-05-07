@@ -10,6 +10,7 @@ import AdminRoute from './components/AdminRoute/AdminRoute';
 import AdminPage from './components/AdminPage/AdminPage';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
+import AboutUs from './components/About/About';
 
 
 // Define routes
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register/>,
+      },
+      {
+        path: "/about",
+        element: <AboutUs/>,
       },
       {
         path: "/login",

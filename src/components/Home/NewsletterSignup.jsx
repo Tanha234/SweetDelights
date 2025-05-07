@@ -18,7 +18,7 @@ export default function NewsletterSignup() {
     <section
       className="py-16 px-4 text-white"
       style={{
-        background: "linear-gradient(90deg, #AF8F6F 0%, #493628 100%)",
+        background: "linear-gradient(20deg, #AF8F6F 0%, #493628 90%)",
       }}
     >
       <div className="max-w-6xl mx-auto text-center">

@@ -20,7 +20,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase()}`}
+              href={`${link.toLowerCase()}`}
               className="hover:text-berryPink transition"
             >
               {link}

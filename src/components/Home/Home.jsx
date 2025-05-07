@@ -20,7 +20,7 @@ function Home() {
         
         <WhyChooseUsCake/>
         <CustomerTestimonials/>
-        <CakeOfTheMonth/>
+        {/* <CakeOfTheMonth/> */}
         <NewsletterSignup/>
     </div>
   )
