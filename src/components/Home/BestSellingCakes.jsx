@@ -17,18 +17,18 @@ export default function SweetCakeCollection() {
         id: 3,
         name: "Mango Cake",
         price: 35,
-        image: "https://source.unsplash.com/200x200/?lychee-cake",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgCrzDTfpKnkLFhbmgSv1aF19tInP0Wgr8w&s",
       },
       {
         id: 4,
         name: "Strawberry Cake",
         price: 40,
-        image: "https://source.unsplash.com/200x200/?strawberry-cake",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UvoZlIw3DoEb303GYD8Tx4zNM9tn6Qr0xw&",
       },
     ];
   
     return (
-      <section className="bg-[#FAF3ED] py-20 px-4 font-sans text-center">
+      <section className="bg-[#FAF3ED] py-20  font-sans text-center">
         {/* Section Title */}
         <h2 className="text-5xl font-bold text-[#493628] mb-2 tracking-wide">Most Loved Cakes</h2>
         <p className="text-lg tracking-[4px] text-[#AF8F6F] uppercase mb-14 font-medium">Collection</p>

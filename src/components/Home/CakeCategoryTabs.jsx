@@ -3,25 +3,25 @@ import { useState } from "react";
 
 const cakeData = {
   "By Flavor": [
-    { name: "Chocolate", image: "/icons/chocolate.png" },
-    { name: "Vanilla", image: "/icons/vanilla.png" },
-    { name: "Red Velvet", image: "/icons/redvelvet.png" },
-    { name: "Strawberry", image: "/icons/strawberry.png" },
-    { name: "Mango", image: "/icons/mango.png" },
+    { name: "Chocolate", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSVXC9OmveSj8zlPuRIQWAmnLU2Bd-cgWxsQ&s" },
+    { name: "Vanilla", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEhp7mgqfbD3R4a3EN1fDSDh_HyMtUHo5s5g&s" },
+    { name: "Red Velvet", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBwGCVGySe5g2TNEP7kYlBMHykraE2a3yZ7A&s" },
+    { name: "Strawberry", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UvoZlIw3DoEb303GYD8Tx4zNM9tn6Qr0xw&s" },
+    { name: "Mango", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgCrzDTfpKnkLFhbmgSv1aF19tInP0Wgr8w&s" },
   ],
   "By Occasion": [
-    { name: "Birthday", image: "/icons/birthday.png" },
-    { name: "Wedding", image: "/icons/wedding.png" },
-    { name: "Anniversary", image: "/icons/anniversary.png" },
-    { name: "Baby Shower", image: "/icons/babyshower.png" },
-    { name: "Graduation", image: "/icons/graduation.png" },
+    { name: "Birthday", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTKQI1PC4CugmvWbhdFTwPaSLSI7OnBck_hw&s" },
+    { name: "Wedding", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSPTWNI70eORzaU1_ZL0egAXTd8Oqa4P_xg&s" },
+    { name: "Anniversary", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf9qwfFoIq9XW7M991NrvVuomzqAKIOU49tw&s" },
+    { name: "Baby Shower", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStMceTHQ4A3wP3tXNHAH_PpMgSfbq06SJu-g&s" },
+    { name: "Graduation", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL-YjSeapIfK-VBLyydoPXwgKrZe9-pXu4iw&s" },
   ],
   "By Type/Design": [
-    { name: "Fondant", image: "/icons/fondant.png" },
-    { name: "Photo Cake", image: "/icons/photo.png" },
-    { name: "Cupcake", image: "/icons/cupcake.png" },
-    { name: "Tier Cake", image: "/icons/tier.png" },
-    { name: "Pinata", image: "/icons/pinata.png" },
+    { name: "Fondant", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkayY52tOyr1-YfKekZHjQqwUU99hb-vp4ew&s" },
+    { name: "Photo Cake", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_kvbCjra1pogeHP-8itBkureeMLLAaM3x_Q&s" },
+    { name: "Cupcake", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQK8lo9tEMVq8uCx-FEabHajFf0kzcdpWDVQ&s" },
+    { name: "Tier Cake", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGkpuDqT_L1hZxs9IQVUCQp45QA_SZLhJZiQ&s" },
+    { name: "Pinata", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIm4GNSkWvVeIe3NIdAR1oK9AXIvtVn0r3g&s" },
   ],
 
 };
@@ -31,18 +31,18 @@ export default function CakeCategoryTabs() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   return (
-    <div className="py-10 px-4 text-center">
-      <h2 className="text-3xl font-bold mb-6">Explore Cake Categories</h2>
+    <div className="py-20 px-4 text-center bg-sweetPink">
+      <h2 className="text-4xl font-bold mb-6 text-berryPink ">Explore Cake Categories</h2>
 
       {/* Tabs */}
       <div className="flex flex-wrap justify-center gap-4 mb-8">
         {tabs.map((tab) => (
           <button
             key={tab}
-            className={`px-4 py-2 rounded-full border ${
+            className={`px-4 py-2 border-b ${
               activeTab === tab
-                ? "bg-pink-500 text-white"
-                : "bg-white text-gray-700 border-pink-400"
+                ? "border-white text-berryPink"
+                : " text-gray-900 border-berryPink"
             } transition duration-200`}
             onClick={() => setActiveTab(tab)}
           >
@@ -52,10 +52,10 @@ export default function CakeCategoryTabs() {
       </div>
 
       {/* Icons Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-4xl mx-auto">
         {cakeData[activeTab].map((item, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-pink-400 shadow-md hover:scale-105 transition duration-300">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-sweetPink shadow-md hover:scale-105 transition duration-300">
               <img
                 src={item.image}
                 alt={item.name}

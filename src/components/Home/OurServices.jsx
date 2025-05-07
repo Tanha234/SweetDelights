@@ -26,14 +26,12 @@ export default function OurServices() {
   ];
 
   return (
-    <section className="py-16 px-4 md:px-12 bg-white text-center">
-      <h2 className="text-3xl font-bold text-berryPink mb-6">Our Services</h2>
-      <p className="text-lg text-gray-700 mb-8">
-        We offer a wide range of services to make your celebration sweeter and more memorable. From custom cakes to fast delivery, we’ve got you covered!
+    <section className="py-16 px-4 md:px-16 bg-berryPink text-center">
+      <h2 className="text-3xl font-bold text-gray-100 mb-6">Our Services</h2>
+      <p className="text-lg text-gray-200 mb-8">
+        We offer a wide range of services to make your celebration sweeter and more memorable!
       </p>
-      <p className="text-lg text-gray-700 mb-8">
-        Every cake is carefully crafted with love, premium ingredients, and attention to detail. Whether you need a cake for a birthday or wedding, we provide a service that suits every occasion.
-      </p>
+     
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {services.map((service, index) => (

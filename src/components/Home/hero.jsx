@@ -3,7 +3,7 @@ import hero from '../../images/4c7fa20e81f74ea09c87e6473db485db-removebg-preview
 export default function Hero() {
   return (
     <section
-      className="pb-24 pt-16 px-4 md:px-40 bg-cover bg-center"
+      className="pb-28 pt-16 px-4 md:px-44 bg-cover bg-center"
       style={{
         backgroundImage:
           "url('https://static.vecteezy.com/system/resources/thumbnails/057/424/148/small_2x/chocolate-cake-on-wooden-table-blurred-background-photo.jpg')",
@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
         {/* Left Side Text */}
         <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-          <h1 className="text-4xl md:text-5xl font-bold text-berryPink mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-berryPink mb-4 leading-tight  mt-10">
             Celebrate Every Moment <br /> with SweetDelights 🎂
           </h1>
           <p className="text-lg text-gray-700 mb-6">

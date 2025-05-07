@@ -2,6 +2,7 @@ import React from 'react'
 import AboutUs from './AboutUs'
 import BestSellingCakes from './BestSellingCakes'
 import CakeCategoryTabs from './CakeCategoryTabs'
+import CustomerTestimonials from './CustomerTestimonials'
 import Hero from './hero'
 import NewsletterSignup from './NewsletterSignup'
 import OurServices from './OurServices'
@@ -12,10 +13,12 @@ function Home() {
     <div>
         <Hero/>
         <CakeCategoryTabs/>
+        <BestSellingCakes/>
         <AboutUs/>
         <OurServices/>
-        <BestSellingCakes/>
+        
         <WhyChooseUsCake/>
+        <CustomerTestimonials/>
         <NewsletterSignup/>
     </div>
   )
