@@ -53,7 +53,7 @@ const sliderSettings = {
 
 const WhatWeOffer = () => {
   return (
-    <section className="py-16 px-4 md:px-44 bg-orange-50 text-center">
+    <section className="py-16 px-4 md:px-44 bg-sweetPink text-center">
       <h2 className="text-3xl md:text-4xl font-bold text-berryPink mb-10">
         🧁 What We Offer
       </h2>

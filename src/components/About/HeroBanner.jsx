@@ -11,7 +11,7 @@ const HeroBanner = () => {
     >
       <div className="max-w-4xl mx-auto bg-black bg-opacity-50 p-8 rounded-xl shadow-lg">
         <h1 className="text-4xl md:text-2xl font-bold mb-6">
-          Welcome to SweetWhisk – <br /> Where Every Slice Tells a Story! 🍰
+          Welcome to SweetDelights – <br /> Where Every Slice Tells a Story! 🍰
         </h1>
         <p className="text-lg leading-relaxed">
           At SweetWhisk, we believe that cakes are more than just desserts – they’re moments of joy,

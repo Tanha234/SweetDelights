@@ -6,7 +6,7 @@ import { Menu, X, LogIn } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = ["Home", "Cakes", "About", "Gallery", "Contact"];
+  const navLinks = ["Home","About", "Cakes", "Gallery", "Contact"];
 
   return (
     <nav className="bg-sweetPink shadow-md sticky top-0 z-50 ">
