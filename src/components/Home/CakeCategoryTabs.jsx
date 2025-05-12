@@ -9,13 +9,13 @@ const cakeData = {
     { name: "Strawberry", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UvoZlIw3DoEb303GYD8Tx4zNM9tn6Qr0xw&s" },
     { name: "Mango", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgCrzDTfpKnkLFhbmgSv1aF19tInP0Wgr8w&s" },
   ],
-  "By Occasion": [
-    { name: "Birthday", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTKQI1PC4CugmvWbhdFTwPaSLSI7OnBck_hw&s" },
-    { name: "Wedding", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSPTWNI70eORzaU1_ZL0egAXTd8Oqa4P_xg&s" },
-    { name: "Anniversary", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf9qwfFoIq9XW7M991NrvVuomzqAKIOU49tw&s" },
-    { name: "Baby Shower", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStMceTHQ4A3wP3tXNHAH_PpMgSfbq06SJu-g&s" },
-    { name: "Graduation", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL-YjSeapIfK-VBLyydoPXwgKrZe9-pXu4iw&s" },
-  ],
+  // "By Occasion": [
+  //   { name: "Birthday", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTKQI1PC4CugmvWbhdFTwPaSLSI7OnBck_hw&s" },
+  //   { name: "Wedding", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSPTWNI70eORzaU1_ZL0egAXTd8Oqa4P_xg&s" },
+  //   { name: "Anniversary", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf9qwfFoIq9XW7M991NrvVuomzqAKIOU49tw&s" },
+  //   { name: "Baby Shower", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStMceTHQ4A3wP3tXNHAH_PpMgSfbq06SJu-g&s" },
+  //   { name: "Graduation", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL-YjSeapIfK-VBLyydoPXwgKrZe9-pXu4iw&s" },
+  // ],
   "By Type/Design": [
     { name: "Fondant", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkayY52tOyr1-YfKekZHjQqwUU99hb-vp4ew&s" },
     { name: "Photo Cake", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_kvbCjra1pogeHP-8itBkureeMLLAaM3x_Q&s" },

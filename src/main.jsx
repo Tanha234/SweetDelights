@@ -11,6 +11,7 @@ import AdminPage from './components/AdminPage/AdminPage';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import AboutUs from './components/About/About';
+import CakeCard from './components/CakeCard/CakeCard';
 
 
 // Define routes
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUs/>,
+      },
+      {
+        path: "/cakes",
+        element: <CakeCard/>,
       },
       {
         path: "/login",
