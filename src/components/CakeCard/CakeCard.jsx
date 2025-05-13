@@ -142,7 +142,7 @@ const ShopPage = () => {
                  <Link to={`/cake/${cake.id}`}>  
 
 
-                    <img src={cake.image} alt={cake.name} className="w-full h-40 object-cover rounded-md mb-4" />
+                    <img src={cake.image} alt={cake.name} className="w-full h-44 object-cover rounded-md mb-4 " />
                     <h3 className="text-lg font-semibold text-berryPink">{cake.name}</h3>
                     <div className="text-yellow-400 text-sm my-1">⭐⭐⭐⭐☆</div>
                     <p className="text-berryPink font-bold text-lg mb-2">${availableSize?.price || 'N/A'}</p>

@@ -14,6 +14,8 @@ import AboutUs from './components/About/About';
 import CakeCard from './components/CakeCard/CakeCard';
 import CakeDetailsPage from './components/CakeDetailsPage/CakeDetailsPage';
 import CartPage from './components/CartPage/CartPage';
+import CheckoutPage from './components/CartPage/CheckoutPage';
+import BuyNowPage from './components/CartPage/BuyNowPage';
 
 
 // Define routes
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage/>,
+      },
+      {
+        path: "/checkout",
+        element: <CheckoutPage/>,
+      },
+      {
+        path: "/buy-now",
+        element: <BuyNowPage/>,
       },
       {
         path: "/login",
