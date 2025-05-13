@@ -1,16 +1,23 @@
 import { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.init';
 
 const Register = () => {
+  const [name, setName] = useState(''); // NEW
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Update displayName
+      await updateProfile(userCredential.user, {
+        displayName: name,
+      });
+
       navigate('/dashboard');
     } catch (error) {
       alert(error.message);
@@ -22,6 +29,12 @@ const Register = () => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Create Account</h2>
         <div className="space-y-4">
+          <input
+            type="text"
+            placeholder="Full Name"
+            onChange={(e) => setName(e.target.value)}
+            className="w-full p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
           <input
             type="email"
             placeholder="Email"

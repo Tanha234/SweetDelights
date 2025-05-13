@@ -138,7 +138,7 @@ const CakeDetailsPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {relatedProducts.map(item => (
             <div key={item.id} className="border rounded-lg p-4 shadow text-center">
-              <img src={item.image} alt={item.name} className="h-32 w-full object-contain bg-gray-50 rounded mb-2" />
+              <img src={item.image} alt={item.name} className="h-44 w-full object-contain bg-gray-50 rounded mb-2" />
               <h4 className="text-sm font-semibold">{item.name}</h4>
               <p className="text-xs text-berryPink mt-1">Cake • Sweet</p>
               <p className="text-berryPink text-sm font-medium">${item.sizes.find(size => size.available)?.price || 'N/A'}</p>

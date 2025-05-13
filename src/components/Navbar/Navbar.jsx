@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, LogIn, ShoppingCart } from "lucide-react";
+import { Menu, X, LogIn, ShoppingCart, User } from "lucide-react"; // Added User icon
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -51,6 +51,11 @@ export default function Navbar() {
             )}
           </Link>
 
+          {/* User Profile Icon */}
+          <Link to="/profile" className="relative">
+            <User size={24} />
+          </Link>
+
           {/* Login link */}
           <Link
             to="/login"
@@ -90,6 +95,15 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
           >
             <LogIn size={18} /> Login
+          </Link>
+
+          {/* Profile link for mobile */}
+          <Link
+            to="/profile"
+            className="flex items-center gap-1 hover:text-berryPink"
+            onClick={() => setIsOpen(false)}
+          >
+            <User size={18} /> Profile
           </Link>
         </div>
       )}
