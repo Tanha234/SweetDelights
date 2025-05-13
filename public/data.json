@@ -1,344 +1,200 @@
 {
-    "By Flavor":[
-       {
-          "name":"Chocolate",
-          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSVXC9OmveSj8zlPuRIQWAmnLU2Bd-cgWxsQ&s",
-          "tags":[
-             "dessert",
-             "chocolate",
-             "sweet"
-          ],
-          "description":"A rich, indulgent chocolate cake made with real cocoa and topped with a smooth chocolate ganache.",
-          "ingredients":[
-             "flour",
-             "sugar",
-             "eggs",
-             "butter",
-             "cocoa powder",
-             "baking powder",
-             "milk"
-          ],
-          "availability":true,
-          "priceOptionsAvailable": 20,
-          "rating":4.9,
-          "reviews":245,
-          "category":"cakes",
-          "sku":"CAKE-001",
-          "sizes":[
-             {
-                "weight":1,
-                "unit":"lb",
-                "price":15.99,
-                "available":true
-             },
-             {
-                "weight":2,
-                "unit":"lb",
-                "price":29.99,
-                "available":true
-             },
-             {
-                "weight":3,
-                "unit":"lb",
-                "price":42.99,
-                "available":false
-             }
-          ],
-          "discount":{
-             "percentage":15,
-             "validUntil":"2025-06-30"
-          }
-       },
-       {
-          "name":"Vanilla",
-          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEhp7mgqfbD3R4a3EN1fDSDh_HyMtUHo5s5g&s",
-          "tags":[
-             "dessert",
-             "cake",
-             "vanilla",
-             "sweet"
-          ],
-          "description":"A light, fluffy vanilla cake made with real vanilla beans and finished with a silky vanilla buttercream.",
-          "ingredients":[
-             "flour",
-             "sugar",
-             "eggs",
-             "butter",
-             "vanilla beans",
-             "baking powder",
-             "milk"
-          ],
-          "availability":true,
-          "rating":4.8,
-          "reviews":124,
-          "category":"cakes",
-          "sku":"CAKE-002",
-          "sizes":[
-             {
-                "weight":1,
-                "unit":"lb",
-                "price":12.99,
-                "available":true
-             },
-             {
-                "weight":2,
-                "unit":"lb",
-                "price":22.99,
-                "available":true
-             },
-             {
-                "weight":3,
-                "unit":"lb",
-                "price":32.99,
-                "available":false
-             }
-          ],
-          "discount":{
-             "percentage":10,
-             "validUntil":"2025-06-30"
-          }
-       },
-       {
-          "name":"Red Velvet",
-          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBwGCVGySe5g2TNEP7kYlBMHykraE2a3yZ7A&s",
-          "tags":[
-             "dessert",
-             "red velvet",
-             "sweet",
-             "velvety"
-          ],
-          "description":"A moist red velvet cake with a hint of cocoa, topped with cream cheese frosting.",
-          "ingredients":[
-             "flour",
-             "sugar",
-             "eggs",
-             "butter",
-             "cocoa powder",
-             "buttermilk",
-             "cream cheese"
-          ],
-          "availability":true,
-          "priceOptionsAvailable": 10,
-          "rating":4.7,
-          "reviews":189,
-          "category":"cakes",
-          "sku":"CAKE-003",
-          "sizes":[
-             {
-                "weight":1,
-                "unit":"lb",
-                "price":18.99,
-                "available":true
-             },
-             {
-                "weight":2,
-                "unit":"lb",
-                "price":33.99,
-                "available":true
-             },
-             {
-                "weight":3,
-                "unit":"lb",
-                "price":48.99,
-                "available":false
-             }
-          ],
-          "discount":{
-             "percentage":12,
-             "validUntil":"2025-06-30"
-          }
-       },
-       {
-          "name":"Strawberry",
-          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UvoZlIw3DoEb303GYD8Tx4zNM9tn6Qr0xw&s",
-          "tags":[
-             "dessert",
-             "cake",
-             "strawberry",
-             "fresh"
-          ],
-          "description":"A light, airy strawberry cake made with fresh strawberries and topped with whipped cream frosting.",
-          "ingredients":[
-             "flour",
-             "sugar",
-             "eggs",
-             "butter",
-             "strawberries",
-             "baking powder",
-             "whipped cream"
-          ],
-          "availability":true,
-          "priceOptionsAvailable": 30,
-          "rating":4.6,
-          "reviews":154,
-          "category":"cakes",
-          "sku":"CAKE-004",
-          "sizes":[
-             {
-                "weight":1,
-                "unit":"lb",
-                "price":14.99,
-                "available":true
-             },
-             {
-                "weight":2,
-                "unit":"lb",
-                "price":27.99,
-                "available":true
-             },
-             {
-                "weight":3,
-                "unit":"lb",
-                "price":40.99,
-                "available":false
-             }
-          ],
-          "discount":{
-             "percentage":10,
-             "validUntil":"2025-06-30"
-          }
-       },
-       {
-          "name":"Mango",
-          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgCrzDTfpKnkLFhbmgSv1aF19tInP0Wgr8w&s",
-          "tags":[
-             "dessert",
-             "cake",
-             "mango",
-             "tropical"
-          ],
-          "description":"A tropical mango cake made with fresh mango puree and topped with a creamy mango frosting.",
-          "ingredients":[
-             "flour",
-             "sugar",
-             "eggs",
-             "butter",
-             "mango puree",
-             "baking powder",
-             "cream cheese"
-          ],
-          "availability":true,
-          "rating":4.8,
-          "priceOptionsAvailable": 23,
-          "reviews":130,
-          "category":"cakes",
-          "sku":"CAKE-005",
-          "sizes":[
-             {
-                "weight":1,
-                "unit":"lb",
-                "price":16.99,
-                "available":true
-             },
-             {
-                "weight":2,
-                "unit":"lb",
-                "price":29.99,
-                "available":true
-             },
-             {
-                "weight":3,
-                "unit":"lb",
-                "price":42.99,
-                "available":false
-             }
-          ],
-          "discount":{
-             "percentage":15,
-             "validUntil":"2025-06-30"
-          }
-       }
-    ],
-  
-    "By Type/Design": [
-        {
-          "name": "Fondant",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkayY52tOyr1-YfKekZHjQqwUU99hb-vp4ew&s",
-          "tags": ["fondant", "decorative", "elegant"],
-          "description": "A cake covered with a smooth layer of fondant, offering a sleek, polished look.",
-          "ingredients": ["flour", "sugar", "eggs", "butter", "vanilla", "fondant"],
-          "availability": true,
-          "rating": 4.7,
-          "reviews": 120,
-          "category": "designs",
-          "sku": "DES-001",
-          "sizes": [
-            { "weight": 1, "unit": "lb", "price": 25.99, "available": true },
-            { "weight": 2, "unit": "lb", "price": 40.99, "available": true }
-          ],
-          "discount": { "percentage": 10, "validUntil": "2025-06-30" }
-        },
-        {
-          "name": "Photo Cake",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_kvbCjra1pogeHP-8itBkureeMLLAaM3x_Q&s",
-          "tags": ["photo", "custom", "personalized"],
-          "description": "A personalized cake with a photo printed on the icing, perfect for special events.",
-          "ingredients": ["flour", "sugar", "eggs", "butter", "vanilla", "fondant", "edible ink"],
-          "availability": true,
-          "priceOptionsAvailable": 20,
-          "rating": 4.8,
-          "reviews": 150,
-          "category": "designs",
-          "sku": "DES-002",
-          "sizes": [
-            { "weight": 1, "unit": "lb", "price": 22.99, "available": true },
-            { "weight": 2, "unit": "lb", "price": 35.99, "available": true }
-          ],
-          "discount": { "percentage": 12, "validUntil": "2025-06-30" }
-        },
-        {
-          "name": "Cupcake",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQK8lo9tEMVq8uCx-FEabHajFf0kzcdpWDVQ&s",
-          "tags": ["cupcake", "individual", "bite-sized", "sweet"],
-          "description": "A single-serving cake in a mini form, perfect for individual portions at any occasion.",
-          "ingredients": ["flour", "sugar", "eggs", "butter", "vanilla", "baking powder"],
-          "availability": true,
-          "priceOptionsAvailable": 40,
-          "rating": 4.5,
-          "reviews": 190,
-          "category": "designs",
-          "sku": "DES-003",
-          "sizes": [
-            { "weight": 0.5, "unit": "lb", "price": 8.99, "available": true },
-            { "weight": 1, "unit": "lb", "price": 15.99, "available": true }
-          ],
-          "discount": { "percentage": 10, "validUntil": "2025-06-30" }
-        },
-        {
-          "name": "Tier Cake",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGkpuDqT_L1hZxs9IQVUCQp45QA_SZLhJZiQ&s",
-          "tags": ["tier", "multi-layered", "elegant", "celebration"],
-          "description": "A multi-tiered cake, perfect for large gatherings and celebrations like weddings or anniversaries.",
-          "ingredients": ["flour", "sugar", "eggs", "butter", "chocolate", "vanilla", "cream cheese"],
-          "availability": true,
-          "priceOptionsAvailable": 5,
-          "rating": 4.9,
-          "reviews": 200,
-          "category": "designs",
-          "sku": "DES-004",
-          "sizes": [
-            { "weight": 2, "unit": "lb", "price": 45.99, "available": true },
-            { "weight": 3, "unit": "lb", "price": 70.99, "available": true }
-          ],
-          "discount": { "percentage": 15, "validUntil": "2025-06-30" }
-        },
-        {
-          "name": "Pinata",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIm4GNSkWvVeIe3NIdAR1oK9AXIvtVn0r3g&s",
-          "tags": ["pinata", "interactive", "fun", "surprise"],
-          "description": "A fun, interactive cake that reveals a surprise filling when cut open.",
-          "ingredients": ["flour", "sugar", "eggs", "butter", "chocolate", "vanilla", "candy"],
-          "availability": true,
-          "priceOptionsAvailable": 20,
-          "rating": 4.8,
-          "reviews": 180,
-          "category": "designs",
-          "sku": "DES-005",
-          "sizes": [
-            { "weight": 1, "unit": "lb", "price": 20.99, "available": true },
-            { "weight": 2, "unit": "lb", "price": 35.99, "available": true }
-          ],
-          "discount": { "percentage": 10, "validUntil": "2025-06-30" }
-        }
-      ]}
-      
+   "By Flavor": [
+     {
+       "id": "flavor-001",
+       "name": "Chocolate",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSVXC9OmveSj8zlPuRIQWAmnLU2Bd-cgWxsQ&s",
+       "tags": ["dessert", "chocolate", "sweet"],
+       "description": "A rich, indulgent chocolate cake made with real cocoa and topped with a smooth chocolate ganache.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "cocoa powder", "baking powder", "milk"],
+       "availability": true,
+       "priceOptionsAvailable": 20,
+       "rating": 4.9,
+       "reviews": 245,
+       "category": "cakes",
+       "sku": "CAKE-001",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 15.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 29.99, "available": true },
+         { "weight": 3, "unit": "lb", "price": 42.99, "available": false }
+       ],
+       "discount": { "percentage": 15, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "flavor-002",
+       "name": "Vanilla",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEhp7mgqfbD3R4a3EN1fDSDh_HyMtUHo5s5g&s",
+       "tags": ["dessert", "cake", "vanilla", "sweet"],
+       "description": "A light, fluffy vanilla cake made with real vanilla beans and finished with a silky vanilla buttercream.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "vanilla beans", "baking powder", "milk"],
+       "availability": true,
+       "rating": 4.8,
+       "reviews": 124,
+       "category": "cakes",
+       "sku": "CAKE-002",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 12.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 22.99, "available": true },
+         { "weight": 3, "unit": "lb", "price": 32.99, "available": false }
+       ],
+       "discount": { "percentage": 10, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "flavor-003",
+       "name": "Red Velvet",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBwGCVGySe5g2TNEP7kYlBMHykraE2a3yZ7A&s",
+       "tags": ["dessert", "red velvet", "sweet", "velvety"],
+       "description": "A moist red velvet cake with a hint of cocoa, topped with cream cheese frosting.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "cocoa powder", "buttermilk", "cream cheese"],
+       "availability": true,
+       "priceOptionsAvailable": 10,
+       "rating": 4.7,
+       "reviews": 189,
+       "category": "cakes",
+       "sku": "CAKE-003",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 18.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 33.99, "available": true },
+         { "weight": 3, "unit": "lb", "price": 48.99, "available": false }
+       ],
+       "discount": { "percentage": 12, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "flavor-004",
+       "name": "Strawberry",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UvoZlIw3DoEb303GYD8Tx4zNM9tn6Qr0xw&s",
+       "tags": ["dessert", "cake", "strawberry", "fresh"],
+       "description": "A light, airy strawberry cake made with fresh strawberries and topped with whipped cream frosting.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "strawberries", "baking powder", "whipped cream"],
+       "availability": true,
+       "priceOptionsAvailable": 30,
+       "rating": 4.6,
+       "reviews": 154,
+       "category": "cakes",
+       "sku": "CAKE-004",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 14.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 27.99, "available": true },
+         { "weight": 3, "unit": "lb", "price": 40.99, "available": false }
+       ],
+       "discount": { "percentage": 10, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "flavor-005",
+       "name": "Mango",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgCrzDTfpKnkLFhbmgSv1aF19tInP0Wgr8w&s",
+       "tags": ["dessert", "cake", "mango", "tropical"],
+       "description": "A tropical mango cake made with fresh mango puree and topped with a creamy mango frosting.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "mango puree", "baking powder", "cream cheese"],
+       "availability": true,
+       "rating": 4.8,
+       "priceOptionsAvailable": 23,
+       "reviews": 130,
+       "category": "cakes",
+       "sku": "CAKE-005",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 16.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 29.99, "available": true },
+         { "weight": 3, "unit": "lb", "price": 42.99, "available": false }
+       ],
+       "discount": { "percentage": 15, "validUntil": "2025-06-30" }
+     }
+   ],
+   "By Type/Design": [
+     {
+       "id": "design-001",
+       "name": "Fondant",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkayY52tOyr1-YfKekZHjQqwUU99hb-vp4ew&s",
+       "tags": ["fondant", "decorative", "elegant"],
+       "description": "A cake covered with a smooth layer of fondant, offering a sleek, polished look.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "vanilla", "fondant"],
+       "availability": true,
+       "rating": 4.7,
+       "reviews": 120,
+       "category": "designs",
+       "sku": "DES-001",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 25.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 40.99, "available": true }
+       ],
+       "discount": { "percentage": 10, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "design-002",
+       "name": "Photo Cake",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_kvbCjra1pogeHP-8itBkureeMLLAaM3x_Q&s",
+       "tags": ["photo", "custom", "personalized"],
+       "description": "A personalized cake with a photo printed on the icing, perfect for special events.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "vanilla", "fondant", "edible ink"],
+       "availability": true,
+       "priceOptionsAvailable": 20,
+       "rating": 4.8,
+       "reviews": 150,
+       "category": "designs",
+       "sku": "DES-002",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 22.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 35.99, "available": true }
+       ],
+       "discount": { "percentage": 12, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "design-003",
+       "name": "Cupcake",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQK8lo9tEMVq8uCx-FEabHajFf0kzcdpWDVQ&s",
+       "tags": ["cupcake", "individual", "bite-sized", "sweet"],
+       "description": "A single-serving cake in a mini form, perfect for individual portions at any occasion.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "vanilla", "baking powder"],
+       "availability": true,
+       "priceOptionsAvailable": 40,
+       "rating": 4.5,
+       "reviews": 190,
+       "category": "designs",
+       "sku": "DES-003",
+       "sizes": [
+         { "weight": 0.5, "unit": "lb", "price": 8.99, "available": true },
+         { "weight": 1, "unit": "lb", "price": 15.99, "available": true }
+       ],
+       "discount": { "percentage": 10, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "design-004",
+       "name": "Tier Cake",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGkpuDqT_L1hZxs9IQVUCQp45QA_SZLhJZiQ&s",
+       "tags": ["tier", "multi-layered", "elegant", "celebration"],
+       "description": "A multi-tiered cake, perfect for large gatherings and celebrations like weddings or anniversaries.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "chocolate", "vanilla", "cream cheese"],
+       "availability": true,
+       "priceOptionsAvailable": 5,
+       "rating": 4.9,
+       "reviews": 200,
+       "category": "designs",
+       "sku": "DES-004",
+       "sizes": [
+         { "weight": 2, "unit": "lb", "price": 45.99, "available": true },
+         { "weight": 3, "unit": "lb", "price": 70.99, "available": true }
+       ],
+       "discount": { "percentage": 15, "validUntil": "2025-06-30" }
+     },
+     {
+       "id": "design-005",
+       "name": "Pinata",
+       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIm4GNSkWvVeIe3NIdAR1oK9AXIvtVn0r3g&s",
+       "tags": ["pinata", "interactive", "fun", "surprise"],
+       "description": "A fun, interactive cake that reveals a surprise filling when cut open.",
+       "ingredients": ["flour", "sugar", "eggs", "butter", "chocolate", "vanilla", "candy"],
+       "availability": true,
+       "priceOptionsAvailable": 20,
+       "rating": 4.8,
+       "reviews": 180,
+       "category": "designs",
+       "sku": "DES-005",
+       "sizes": [
+         { "weight": 1, "unit": "lb", "price": 20.99, "available": true },
+         { "weight": 2, "unit": "lb", "price": 35.99, "available": true }
+       ],
+       "discount": { "percentage": 10, "validUntil": "2025-06-30" }
+     }
+   ]
+ }
+ 

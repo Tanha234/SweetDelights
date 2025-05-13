@@ -12,6 +12,8 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import AboutUs from './components/About/About';
 import CakeCard from './components/CakeCard/CakeCard';
+import CakeDetailsPage from './components/CakeDetailsPage/CakeDetailsPage';
+import CartPage from './components/CartPage/CartPage';
 
 
 // Define routes
@@ -26,15 +28,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Register/>,
+        element: <Register />,
       },
       {
-        path: "/about",
-        element: <AboutUs/>,
+        path: "/about", // Absolute path
+        element: <AboutUs />,
       },
       {
         path: "/cakes",
-        element: <CakeCard/>,
+        element: <CakeCard />,
+      },
+      {
+        path: "/cake/:id",
+        element: <CakeDetailsPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage/>,
       },
       {
         path: "/login",
@@ -44,7 +54,7 @@ const router = createBrowserRouter([
         path: "/admin",
         element: (
           <AdminRoute>
-            <AdminPage />  {/* Your Admin page here */}
+            <AdminPage />
           </AdminRoute>
         ),
       },

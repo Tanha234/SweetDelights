@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ShopPage = () => {
   const [cakes, setCakes] = useState([]);
@@ -9,9 +10,12 @@ const ShopPage = () => {
 
   useEffect(() => {
     fetch('/data.json')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch data.json');
+        return res.json();
+      })
       .then(data => {
-        const allCakes = [...data['By Flavor'], ...data['By Type/Design']];
+        const allCakes = [...(data['By Flavor'] || []), ...(data['By Type/Design'] || [])];
         setCakes(allCakes);
         setFilteredCakes(allCakes);
       })
@@ -43,6 +47,10 @@ const ShopPage = () => {
     setFilteredCakes(filtered);
   }, [searchTerm, cakes, priceRange, sortOrder]);
 
+  const handleAddToCart = (cake) => {
+    console.log('Added to cart:', cake.name);
+  };
+
   return (
     <div className="bg-sweetPink min-h-screen text-gray-800">
       {/* Banner */}
@@ -63,16 +71,11 @@ const ShopPage = () => {
           <div className="mb-10">
             <h2 className="text-xl font-semibold border-b pb-2 mb-3">Available Cakes</h2>
             <ul className="space-y-3 text-sm">
-              {cakes
-                .filter(cake => cake.priceOptionsAvailable > 0)
-                .sort((a, b) => b.priceOptionsAvailable - a.priceOptionsAvailable)
-                .slice(0, 8)
-                .map((cake, idx) => (
-                  <li key={idx} className="flex justify-between text-md text-gray-900">
-                    <span className="truncate">{cake.name}</span>
-                   
-                  </li>
-                ))}
+              {cakes.slice(0, 8).map((cake, idx) => (
+                <li key={idx} className="flex justify-between text-md text-gray-900">
+                  <span className="truncate">{cake.name}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -86,6 +89,7 @@ const ShopPage = () => {
               value={priceRange}
               onChange={(e) => setPriceRange(Number(e.target.value))}
             />
+            <p className="text-sm mt-1">Up to ${priceRange}</p>
           </div>
 
           <div>
@@ -96,7 +100,9 @@ const ShopPage = () => {
                   <img src={cake.image} alt={cake.name} className="w-12 h-12 object-cover rounded-full" />
                   <div>
                     <p className="text-sm font-medium">{cake.name}</p>
-                    <p className="text-xs text-gray-800 font-semibold">${cake.sizes[0]?.price}</p>
+                    <p className="text-xs text-gray-800 font-semibold">
+                      ${cake.sizes.find(size => size.available)?.price || 'N/A'}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -119,34 +125,38 @@ const ShopPage = () => {
               value={sortOrder}
               onChange={e => setSortOrder(e.target.value)}
             >
-              <option>Sort by</option>
+              <option value="">Sort by</option>
               <option>Price: Low to High</option>
               <option>Price: High to Low</option>
             </select>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-  {filteredCakes.map((cake, idx) => {
-    const availableSize = cake.sizes.find(size => size.available);
-    return (
-      <div key={idx} className="bg-sweetPink border border-berryPink p-4 shadow rounded-xl text-center">
+            {filteredCakes.map((cake, idx) => {
+              const availableSize = cake.sizes.find(size => size.available);
+              return (
+                <div
+                  key={idx}
+                  className="block bg-sweetPink border border-berryPink p-4 shadow rounded-xl text-center hover:shadow-lg transition"
+                >
+                 <Link to={`/cake/${cake.id}`}>  
 
-        <img src={cake.image} alt={cake.name} className="w-full h-40 object-cover rounded-md mb-4" />
-        <h3 className="text-lg font-semibold text-gray-800">{cake.name}</h3>
-        <div className="text-yellow-400 text-sm my-1">⭐⭐⭐⭐☆</div>
-        <p className="text-berryPink font-bold text-lg mb-2">${availableSize?.price || 'N/A'}</p>
 
-        <button
-          className="border border-berryPink  text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-berryPink transition duration-200"
-          onClick={() => handleAddToCart(cake)}
-        >
-          Add to Cart
-        </button>
-      </div>
-    );
-  })}
-</div>
-
+                    <img src={cake.image} alt={cake.name} className="w-full h-40 object-cover rounded-md mb-4" />
+                    <h3 className="text-lg font-semibold text-berryPink">{cake.name}</h3>
+                    <div className="text-yellow-400 text-sm my-1">⭐⭐⭐⭐☆</div>
+                    <p className="text-berryPink font-bold text-lg mb-2">${availableSize?.price || 'N/A'}</p>
+                  </Link>
+                  <button
+                    className="border border-berryPink text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-berryPink hover:text-white transition duration-200 mt-2"
+                    onClick={() => handleAddToCart(cake)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </section>
       </div>
     </div>
