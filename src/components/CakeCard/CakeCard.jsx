@@ -26,13 +26,13 @@ const ShopPage = () => {
       return nameMatch && priceMatch;
     });
 
-    if (sortOrder === 'low-to-high') {
+    if (sortOrder === 'Price: Low to High') {
       filtered.sort((a, b) => {
         const aPrice = a.sizes.find(size => size.available)?.price || 0;
         const bPrice = b.sizes.find(size => size.available)?.price || 0;
         return aPrice - bPrice;
       });
-    } else if (sortOrder === 'high-to-low') {
+    } else if (sortOrder === 'Price: High to Low') {
       filtered.sort((a, b) => {
         const aPrice = a.sizes.find(size => size.available)?.price || 0;
         const bPrice = b.sizes.find(size => size.available)?.price || 0;
@@ -44,7 +44,7 @@ const ShopPage = () => {
   }, [searchTerm, cakes, priceRange, sortOrder]);
 
   return (
-    <div className="bg-[#f8f6f6] min-h-screen text-gray-800">
+    <div className="bg-sweetPink min-h-screen text-gray-800">
       {/* Banner */}
       <div className="relative">
         <img
@@ -53,7 +53,7 @@ const ShopPage = () => {
           alt="Shop Banner"
         />
         <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <h1 className="text-4xl font-bold text-pink-600 italic">Our Shop</h1>
+          <h1 className="text-4xl font-bold text-white italic">Cakes Collection</h1>
         </div>
       </div>
 
@@ -68,11 +68,9 @@ const ShopPage = () => {
                 .sort((a, b) => b.priceOptionsAvailable - a.priceOptionsAvailable)
                 .slice(0, 8)
                 .map((cake, idx) => (
-                  <li key={idx} className="flex justify-between text-gray-700">
+                  <li key={idx} className="flex justify-between text-md text-gray-900">
                     <span className="truncate">{cake.name}</span>
-                    <span className="bg-pink-100 text-pink-600 text-xs px-2 py-0.5 rounded">
-                      {cake.priceOptionsAvailable}
-                    </span>
+                   
                   </li>
                 ))}
             </ul>
@@ -86,9 +84,8 @@ const ShopPage = () => {
               min="5"
               max="75"
               value={priceRange}
-              onChange={e => setPriceRange(Number(e.target.value))}
+              onChange={(e) => setPriceRange(Number(e.target.value))}
             />
-            <p className="text-sm mt-2 text-gray-600">Under ${priceRange}</p>
           </div>
 
           <div>
@@ -96,16 +93,10 @@ const ShopPage = () => {
             <ul className="space-y-4">
               {cakes.slice(0, 3).map((cake, idx) => (
                 <li key={idx} className="flex items-center gap-4">
-                  <img
-                    src={cake.image}
-                    alt={cake.name}
-                    className="w-12 h-12 object-cover rounded-full"
-                  />
+                  <img src={cake.image} alt={cake.name} className="w-12 h-12 object-cover rounded-full" />
                   <div>
                     <p className="text-sm font-medium">{cake.name}</p>
-                    <p className="text-xs text-gray-500 font-semibold">
-                      ${cake.sizes[0]?.price}
-                    </p>
+                    <p className="text-xs text-gray-800 font-semibold">${cake.sizes[0]?.price}</p>
                   </div>
                 </li>
               ))}
@@ -119,7 +110,7 @@ const ShopPage = () => {
             <input
               type="text"
               placeholder="Search cakes..."
-              className="p-3 border border-gray-300 rounded-md w-1/2"
+              className="p-3 border border-gray-400 text-gray-900 rounded-md w-1/2"
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
             />
@@ -128,39 +119,34 @@ const ShopPage = () => {
               value={sortOrder}
               onChange={e => setSortOrder(e.target.value)}
             >
-              <option value="">Sort by</option>
-              <option value="low-to-high">Price: Low to High</option>
-              <option value="high-to-low">Price: High to Low</option>
+              <option>Sort by</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
             </select>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCakes.map((cake, idx) => {
-              const availableSize = cake.sizes.find(size => size.available);
-              return (
-                <div key={idx} className="bg-white p-4 shadow rounded-xl text-center">
-                  <img
-                    src={cake.image}
-                    alt={cake.name}
-                    className="w-full h-40 object-cover rounded-md mb-4"
-                  />
-                  <h3 className="text-lg font-semibold text-gray-800">{cake.name}</h3>
-                  <div className="text-yellow-400 text-sm my-1">⭐⭐⭐⭐☆</div>
-                  <p className="text-pink-600 font-bold text-lg mb-2">
-                    ${availableSize?.price || 'N/A'}
-                  </p>
-                  <div className="flex gap-2 justify-center">
-                    <button className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
-                      Add to Cart
-                    </button>
-                    <button className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 transition">
-                      Order Now
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+  {filteredCakes.map((cake, idx) => {
+    const availableSize = cake.sizes.find(size => size.available);
+    return (
+      <div key={idx} className="bg-sweetPink border border-berryPink p-4 shadow rounded-xl text-center">
+
+        <img src={cake.image} alt={cake.name} className="w-full h-40 object-cover rounded-md mb-4" />
+        <h3 className="text-lg font-semibold text-gray-800">{cake.name}</h3>
+        <div className="text-yellow-400 text-sm my-1">⭐⭐⭐⭐☆</div>
+        <p className="text-berryPink font-bold text-lg mb-2">${availableSize?.price || 'N/A'}</p>
+
+        <button
+          className="border border-berryPink  text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-berryPink transition duration-200"
+          onClick={() => handleAddToCart(cake)}
+        >
+          Add to Cart
+        </button>
+      </div>
+    );
+  })}
+</div>
+
         </section>
       </div>
     </div>
