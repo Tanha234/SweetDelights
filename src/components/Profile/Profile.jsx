@@ -16,6 +16,7 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState('info');
   const [user, setUser] = useState(null);
   const [orderHistory, setOrderHistory] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -28,7 +29,7 @@ export default function ProfilePage() {
     return () => unsubscribe();
   }, []);
   
-
+  // Fetch orders for the 'orders' tab
   useEffect(() => {
     if (activeTab === 'orders' && user) {
       const fetchOrders = async () => {
@@ -37,8 +38,6 @@ export default function ProfilePage() {
       
         try {
           const response = await fetch(`http://localhost:5000/api/orders?name=${user.displayName}`);
-
-      
           if (!response.ok) {
             throw new Error('Failed to fetch orders');
           }
@@ -63,7 +62,34 @@ export default function ProfilePage() {
       fetchOrders();
     }
   }, [activeTab, user]);
-  
+
+  // Fetch wishlist for the 'wishlist' tab
+  useEffect(() => {
+    if (activeTab === 'wishlist' && user) {
+      const fetchWishlist = async () => {
+        setLoading(true);
+        setError(null);
+
+        try {
+          const response = await fetch(`http://localhost:5000/api/wishlist/${user.displayName}`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch wishlist');
+          }
+
+          const data = await response.json();
+          setWishlist(data.items || []);
+        } catch (error) {
+          console.error('Error fetching wishlist:', error);
+          setError('Could not fetch wishlist. Please try again later.');
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchWishlist();
+    }
+  }, [activeTab, user]);
+
   // Handle profile image upload
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -84,57 +110,94 @@ export default function ProfilePage() {
       alert('Failed to upload image');
     }
   };
-
+  const handleDelete = async (itemId) => {
+    try {
+      await fetch(`http://localhost:5000/api/wishlist/${user.displayName}/${itemId}`, {
+        method: 'DELETE'
+      });
+  
+      setWishlist((prev) => prev.filter(item => item.id !== itemId));
+    } catch (error) {
+      console.error('Failed to delete wishlist item:', error);
+    }
+  };
+  
   // Render content based on active tab
   const renderTabContent = () => {
     switch (activeTab) {
       case 'info':
         return <PersonalInfo />;
-        case 'orders':
+      case 'orders':
+        return (
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Order History</h2>
+            {loading && <p>Loading orders...</p>}
+            {error && <p className="text-red-500">{error}</p>}
+            <ul className="space-y-4">
+              {orderHistory.length === 0 ? (
+                <p className="text-gray-600">No orders found.</p>
+              ) : (
+                orderHistory.map((order) => (
+                  <li key={order._id} className="p-4 border rounded-lg bg-white shadow-sm">
+                    <div className="flex justify-between">
+                      <div>
+                        <p className="font-semibold text-gray-800">Order #{order._id}</p>
+                        <p className="text-sm text-gray-500">Date: {new Date(order.date).toLocaleDateString()}</p>
+                        <p className="text-sm text-gray-600">Status: {order.status}</p>
+                        <div className="text-sm text-gray-700 mt-2">
+                          <h3 className="font-medium">Ordered Items:</h3>
+                          <ul className="list-disc list-inside">
+                            {order.items.map((item, idx) => (
+                              <li key={item._id}>
+                                <span className="font-semibold">{item.name}</span> × {item.quantity}
+                                <span className="ml-2 text-gray-500">${item.totalPrice.toFixed(2)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="text-berryPink font-bold text-lg">${order.total.toFixed(2)}</div>
+                    </div>
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+        );
+        case 'wishlist':
           return (
             <div>
-              <h2 className="text-xl font-semibold mb-4">Order History</h2>
-              {loading && <p>Loading orders...</p>}
+              <h2 className="text-xl font-semibold mb-4">Wishlist</h2>
+              {loading && <p>Loading wishlist...</p>}
               {error && <p className="text-red-500">{error}</p>}
-              <ul className="space-y-4">
-                {orderHistory.length === 0 ? (
-                  <p className="text-gray-600">No orders found.</p>
-                ) : (
-                  orderHistory.map((order) => (
-                    <li key={order._id} className="p-4 border rounded-lg bg-white shadow-sm">
-                      <div className="flex justify-between">
-                        <div>
-                          <p className="font-semibold text-gray-800">Order #{order._id}</p>
-                          <p className="text-sm text-gray-500">Date: {new Date(order.date).toLocaleDateString()}</p>
-                          <p className="text-sm text-gray-600">Status: {order.status}</p>
-                          <div className="text-sm text-gray-700 mt-2">
-                            <h3 className="font-medium">Ordered Items:</h3>
-                            <ul className="list-disc list-inside">
-                              {order.items.map((item, idx) => (
-                                <li key={item._id}>
-                                  <span className="font-semibold">{item.name}</span> × {item.quantity}
-                                  <span className="ml-2 text-gray-500">${item.totalPrice.toFixed(2)}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+              {wishlist.length === 0 ? (
+                <p className="text-gray-600">Your wishlist is empty.</p>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {wishlist.map((item) => (
+                    <div key={item.id} className="p-4 border rounded-lg bg-white shadow-sm relative">
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm"
+                        title="Remove from Wishlist"
+                      >
+                        ✕
+                      </button>
+                      <div className="flex flex-col items-center">
+                        <img src={item.image} alt={item.name} className="w-32 h-32 rounded-lg object-cover mb-4" />
+                        <div className="text-center">
+                          <p className="font-semibold text-gray-800">{item.name}</p>
+                          <p className="text-sm text-gray-600">{item.description || 'No details available.'}</p>
+                          <p className="text-berryPink font-bold text-lg">${item.price || 'N/A'}</p>
                         </div>
-                        <div className="text-berryPink font-bold text-lg">${order.total.toFixed(2)}</div>
                       </div>
-                    </li>
-                  ))
-                )}
-              </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           );
         
-      case 'wishlist':
-        return (
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Wishlist</h2>
-            <p>You have 3 items saved for later.</p>
-          </div>
-        );
       case 'notifications':
         return (
           <div>

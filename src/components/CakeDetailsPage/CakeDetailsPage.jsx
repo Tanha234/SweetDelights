@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.init'; // Ensure this is imported
 
 const CakeDetailsPage = () => {
   const { id } = useParams();
@@ -7,8 +8,10 @@ const CakeDetailsPage = () => {
   const [cake, setCake] = useState(null);
   const [allCakes, setAllCakes] = useState([]);
   const [activeTab, setActiveTab] = useState('description');
+  const [currentUser, setCurrentUser] = useState(null); // Add this state for current user
 
   useEffect(() => {
+    // Fetch the cake data
     fetch('/data.json')
       .then(res => res.json())
       .then(data => {
@@ -19,9 +22,56 @@ const CakeDetailsPage = () => {
       });
   }, [id]);
 
+  useEffect(() => {
+    // Fetch user from Firebase
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user); // Update current user when auth state changes
+    });
+    return () => unsubscribe(); // Cleanup on component unmount
+  }, []);
+
   if (!cake) return <div className="p-8 text-center text-gray-600">Loading cake details...</div>;
 
   const relatedProducts = allCakes.filter(item => item.id !== cake.id).slice(0, 4);
+
+  const handleAddToWishlist = async () => {
+    if (!currentUser || !currentUser.displayName) {
+      alert('You must be logged in and have a display name to add to wishlist!');
+      return;
+    }
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/wishlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: currentUser.displayName,  // Using displayName here
+          item: {
+            id: cake.id,
+            name: cake.name,
+            image: cake.image,
+            description:cake.description,
+            price: cake.sizes.find(size => size.available)?.price || 'N/A',  // Send the price
+          },
+        }),
+      });
+  
+      if (!response.ok) {
+        console.error('Error adding to wishlist:', response.statusText);
+        return;
+      }
+  
+      const data = await response.json();
+      alert(data.message || 'Added to wishlist!');
+    } catch (error) {
+      console.error('Error adding to wishlist:', error);
+    }
+  };
+  
+  
+  
 
   const handleAddToCart = () => {
     const selectedSize = cake.sizes.find(size => size.available)?.name;
@@ -99,6 +149,7 @@ const CakeDetailsPage = () => {
           <div className="flex gap-4 mt-6">
             <button onClick={handleBuyNow} className="bg-berryPink text-white text-sm px-6 py-2 rounded hover:opacity-90">Buy Now</button>
             <button onClick={handleAddToCart} className="border border-sweetPink text-sm px-6 py-2 rounded hover:bg-black hover:text-white">Add to Cart</button>
+            <button onClick={handleAddToWishlist} className="border border-gray-400 text-sm px-6 py-2 rounded hover:bg-gray-100">Wishlist</button>
           </div>
 
           <div className="text-xs text-gray-900 mt-6 space-y-1">
