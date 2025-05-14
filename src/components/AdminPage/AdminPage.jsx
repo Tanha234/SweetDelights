@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { auth } from '../../firebase/firebase.init'; // Adjust path to your Firebase setup
 import Dashboard from './Dashboard';
+import CustomersPage from './CustomersPage';
 
 const tabs = [
   { id: 'overview', label: 'Dashboard Overview', icon: <LayoutDashboard size={18} /> },
@@ -38,7 +39,7 @@ export default function AdminDashboard() {
       case 'orders':
         return <div><h2 className="text-xl font-semibold mb-4">Order Management</h2></div>;
       case 'customers':
-        return <div><h2 className="text-xl font-semibold mb-4">Customer Management</h2></div>;
+        return <div><CustomersPage/></div>;
       case 'inventory':
         return <div><h2 className="text-xl font-semibold mb-4">Inventory & Stock Alerts</h2></div>;
       case 'custom':
@@ -56,7 +57,7 @@ export default function AdminDashboard() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-r p-4 shadow-md">
+      <aside className="w-64 bg-sweetPink border-r p-4 shadow-md">
         {/* Admin Info */}
         <div className="flex flex-col items-center text-center mb-6">
           <img
@@ -65,7 +66,7 @@ export default function AdminDashboard() {
             className="w-20 h-20 rounded-full object-cover mb-2"
           />
           <h3 className="text-lg font-semibold">{admin?.displayName || 'Admin User'}</h3>
-          <p className="text-sm text-gray-500">{admin?.email || 'admin@example.com'}</p>
+          <p className="text-sm text-gray-800">{admin?.email || 'admin@example.com'}</p>
         </div>
 
         {/* Tabs */}
@@ -76,7 +77,7 @@ export default function AdminDashboard() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center w-full gap-3 px-4 py-2 rounded-lg text-sm font-medium transition ${
                 activeTab === tab.id
-                  ? 'bg-pink-100 text-pink-600'
+                  ? ' text-pink-900'
                   : 'hover:bg-gray-100 text-gray-700'
               }`}
             >
