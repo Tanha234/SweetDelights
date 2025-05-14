@@ -16,30 +16,55 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState('info');
   const [user, setUser] = useState(null);
   const [orderHistory, setOrderHistory] = useState([]);
-  
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Fetch user data on auth state change
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      console.log('Auth state changed, currentUser:', currentUser);
       setUser(currentUser);
     });
     return () => unsubscribe();
   }, []);
+  
 
   useEffect(() => {
     if (activeTab === 'orders' && user) {
       const fetchOrders = async () => {
+        setLoading(true);
+        setError(null);
+      
         try {
-          const response = await fetch(`/orders?userId=${user.uid}`); // Fetch orders from the backend
+          const response = await fetch(`http://localhost:5000/api/orders?name=${user.displayName}`);
+
+      
+          if (!response.ok) {
+            throw new Error('Failed to fetch orders');
+          }
+      
           const orders = await response.json();
-          setOrderHistory(orders.reverse());
+          console.log('Fetched orders:', orders);
+      
+          if (orders.message === 'No orders found') {
+            console.log('No orders found for this user');
+            setOrderHistory([]);
+          } else {
+            setOrderHistory(orders.reverse());
+          }
         } catch (error) {
           console.error('Error fetching orders:', error);
+          setError('Could not fetch orders. Please try again later.');
+        } finally {
+          setLoading(false);
         }
       };
-
+      
       fetchOrders();
     }
   }, [activeTab, user]);
-
+  
+  // Handle profile image upload
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file || !auth.currentUser) return;
@@ -60,39 +85,49 @@ export default function ProfilePage() {
     }
   };
 
+  // Render content based on active tab
   const renderTabContent = () => {
     switch (activeTab) {
       case 'info':
         return <PersonalInfo />;
-      case 'orders':
-        return (
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Order History</h2>
-            <ul className="space-y-4">
-              {orderHistory.length === 0 ? (
-                <p className="text-gray-600">No orders found.</p>
-              ) : (
-                orderHistory.map((order) => (
-                  <li key={order._id} className="p-4 border rounded-lg bg-white shadow-sm">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-semibold text-gray-800">Order #{order._id}</p>
-                        <p className="text-sm text-gray-500">Date: {new Date(order.date).toLocaleDateString()}</p>
-                        <p className="text-sm text-gray-600">Status: {order.status}</p>
-                        <ul className="text-sm mt-2 text-gray-700 list-disc list-inside">
-                          {order.items.map((item, idx) => (
-                            <li key={idx}>{item.name} × {item.quantity}</li>
-                          ))}
-                        </ul>
+        case 'orders':
+          return (
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Order History</h2>
+              {loading && <p>Loading orders...</p>}
+              {error && <p className="text-red-500">{error}</p>}
+              <ul className="space-y-4">
+                {orderHistory.length === 0 ? (
+                  <p className="text-gray-600">No orders found.</p>
+                ) : (
+                  orderHistory.map((order) => (
+                    <li key={order._id} className="p-4 border rounded-lg bg-white shadow-sm">
+                      <div className="flex justify-between">
+                        <div>
+                          <p className="font-semibold text-gray-800">Order #{order._id}</p>
+                          <p className="text-sm text-gray-500">Date: {new Date(order.date).toLocaleDateString()}</p>
+                          <p className="text-sm text-gray-600">Status: {order.status}</p>
+                          <div className="text-sm text-gray-700 mt-2">
+                            <h3 className="font-medium">Ordered Items:</h3>
+                            <ul className="list-disc list-inside">
+                              {order.items.map((item, idx) => (
+                                <li key={item._id}>
+                                  <span className="font-semibold">{item.name}</span> × {item.quantity}
+                                  <span className="ml-2 text-gray-500">${item.totalPrice.toFixed(2)}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        <div className="text-berryPink font-bold text-lg">${order.total.toFixed(2)}</div>
                       </div>
-                      <div className="text-berryPink font-bold text-lg">${order.total}</div>
-                    </div>
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
-        );
+                    </li>
+                  ))
+                )}
+              </ul>
+            </div>
+          );
+        
       case 'wishlist':
         return (
           <div>
@@ -136,9 +171,7 @@ export default function ProfilePage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center w-full gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                activeTab === tab.id ? 'bg-berryPink text-white' : 'text-gray-700 hover:bg-gray-100'
-              }`}
+              className={`flex items-center w-full gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === tab.id ? 'bg-berryPink text-white' : 'text-gray-700 hover:bg-gray-100'}`}
             >
               {tab.icon}
               {tab.label}

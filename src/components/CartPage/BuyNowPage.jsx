@@ -21,8 +21,14 @@ const BuyNowPage = () => {
     const existingItem = acc.find((i) => i.name === item.name);
     if (existingItem) {
       existingItem.quantity += item.quantity;
+      existingItem.totalPrice += item.price * item.quantity; // Add total price for grouped items
     } else {
-      acc.push({ name: item.name, quantity: item.quantity });
+      acc.push({
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        totalPrice: item.price * item.quantity, // Store the total price for this item
+      });
     }
     return acc;
   }, []);
@@ -41,7 +47,7 @@ const BuyNowPage = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/submit-order', {
+      const response = await fetch('http://localhost:5000/api/submit-order', {  // Ensure this URL is correct
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +86,8 @@ const BuyNowPage = () => {
             <ul className="list-disc list-inside text-gray-700">
               {groupedItems.map((item, i) => (
                 <li key={i}>
-                  {item.name} × {item.quantity}
+                  {item.name} × {item.quantity} 
+                  
                 </li>
               ))}
             </ul>
