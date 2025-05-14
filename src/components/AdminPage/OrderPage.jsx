@@ -43,22 +43,31 @@ export default function OrderManagement() {
   }, [statusFilter, orders]);
 
   const updateStatus = async (id, newStatus) => {
+    console.log("Updating order:", id, "to status:", newStatus); // log
+  
     try {
-      await fetch(`http://localhost:5000/api/orders/${id}`, {
+      // Make the PATCH request
+      const response = await fetch(`http://localhost:5000/api/orders/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
       });
-
-      setOrders(prev =>
-        prev.map(order =>
-          order._id === id ? { ...order, status: newStatus } : order
-        )
-      );
+  
+      if (response.ok) {
+        // Update the order status in the local state immediately after the update
+        setOrders(prevOrders =>
+          prevOrders.map(order =>
+            order._id === id ? { ...order, status: newStatus } : order
+          )
+        );
+      } else {
+        console.error("Failed to update status");
+      }
     } catch (error) {
-      console.error("Failed to update status", error);
+      console.error("Error updating status:", error);
     }
   };
+  
 
   const deleteOrder = async (id) => {
     try {

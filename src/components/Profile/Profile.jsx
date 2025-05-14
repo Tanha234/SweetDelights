@@ -138,27 +138,50 @@ export default function ProfilePage() {
                 <p className="text-gray-600">No orders found.</p>
               ) : (
                 orderHistory.map((order) => (
-                  <li key={order._id} className="p-4 border rounded-lg bg-white shadow-sm">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-semibold text-gray-800">Order #{order._id}</p>
-                        <p className="text-sm text-gray-500">Date: {new Date(order.date).toLocaleDateString()}</p>
-                        <p className="text-sm text-gray-600">Status: {order.status}</p>
-                        <div className="text-sm text-gray-700 mt-2">
-                          <h3 className="font-medium">Ordered Items:</h3>
-                          <ul className="list-disc list-inside">
-                            {order.items.map((item, idx) => (
-                              <li key={item._id}>
-                                <span className="font-semibold">{item.name}</span> × {item.quantity}
-                                <span className="ml-2 text-gray-500">${item.totalPrice.toFixed(2)}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                  <li key={order._id} className="border border-purple-300 p-6 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Card */}
+                    <div className="p-6 rounded-xl border bg-green-50 border-green-200 relative">
+                      {/* Order Header */}
+                      <div className="flex justify-between items-center mb-3">
+                        <p className="font-semibold text-lg text-gray-800">Order #{order._id}</p>
+                        <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
+                          {order.status}
+                        </span>
                       </div>
-                      <div className="text-berryPink font-bold text-lg">${order.total.toFixed(2)}</div>
+                
+                      {/* Date */}
+                      <p className="text-sm text-gray-600 mb-4">
+                        <span className="font-medium text-gray-700">Date:</span>{' '}
+                        {new Date(order.date).toLocaleDateString()}
+                      </p>
+                
+                      {/* Ordered Items */}
+                      <div className="text-sm text-gray-700">
+                        <h3 className="font-semibold mb-2">Ordered Items:</h3>
+                        <ul className="list-disc list-inside space-y-1">
+                          {order.items.map((item) => (
+                            <li key={item._id}>
+                              <span className="font-medium">{item.name}</span> × {item.quantity}
+                              <span className="ml-2 text-gray-500"></span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                
+                      {/* Icon */}
+                      <div className="absolute top-4 right-4 text-gray-400 text-lg">📄</div>
+                
+                      {/* Total Price */}
+                      <div className="text-right text-xl font-bold text-pink-500 mt-5">
+                        ${order.total.toFixed(2)}
+                      </div>
                     </div>
-                  </li>
+                  </div>
+                </li>
+                
+
+                
                 ))
               )}
             </ul>

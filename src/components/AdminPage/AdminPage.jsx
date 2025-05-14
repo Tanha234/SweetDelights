@@ -7,13 +7,14 @@ import { auth } from '../../firebase/firebase.init'; // Adjust path to your Fire
 import Dashboard from './Dashboard';
 import CustomersPage from './CustomersPage';
 import OrderPage from './OrderPage';
+import CakeEntryForm from './CakeEntryForm';
 
 const tabs = [
   { id: 'overview', label: 'Dashboard Overview', icon: <LayoutDashboard size={18} /> },
   { id: 'products', label: 'Product Management', icon: <Package size={18} /> },
   { id: 'orders', label: 'Order Management', icon: <ClipboardList size={18} /> },
   { id: 'customers', label: 'Customer Management', icon: <Users size={18} /> },
-  { id: 'inventory', label: 'Inventory & Stock Alerts', icon: <AlertCircle size={18} /> },
+ 
   { id: 'custom', label: 'Custom Cake Orders', icon: <Cake size={18} /> },
   { id: 'promotions', label: 'Promotions & Discounts', icon: <Percent size={18} /> },
 
@@ -36,13 +37,12 @@ export default function AdminDashboard() {
       case 'overview':
         return <div><Dashboard/></div>;
       case 'products':
-        return <div><h2 className="text-xl font-semibold mb-4">Product Management</h2></div>;
+        return <div><CakeEntryForm/></div>;
       case 'orders':
         return <div><OrderPage/></div>;
       case 'customers':
         return <div><CustomersPage/></div>;
-      case 'inventory':
-        return <div><h2 className="text-xl font-semibold mb-4">Inventory & Stock Alerts</h2></div>;
+    
       case 'custom':
         return <div><h2 className="text-xl font-semibold mb-4">Custom Cake Orders</h2></div>;
       case 'promotions':
