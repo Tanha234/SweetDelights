@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Menu,
-  X,
-  LogIn,
-  ShoppingCart,
-  User,
-  UserCog,
-  LogOut,
-} from "lucide-react";
+import { Menu, X, LogIn, ShoppingCart, User, UserCog, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut, getIdTokenResult } from "firebase/auth";
 
@@ -21,15 +13,18 @@ export default function Navbar() {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+
       if (user) {
-        try {
-          const tokenResult = await getIdTokenResult(user);
-          setIsAdmin(tokenResult.claims.role === "admin");
-        } catch (error) {
-          console.error("Error fetching token result:", error);
-        }
+        getIdTokenResult(user)
+          .then((idTokenResult) => {
+            setIsAdmin(idTokenResult.claims.role === "admin");
+          })
+          .catch((error) => {
+            console.error("Error fetching token result:", error);
+            setIsAdmin(false);
+          });
       } else {
         setIsAdmin(false);
       }
@@ -46,27 +41,27 @@ export default function Navbar() {
 
     updateCartCount();
     window.addEventListener("cartUpdated", updateCartCount);
+
     return () => {
       window.removeEventListener("cartUpdated", updateCartCount);
     };
   }, []);
 
   const handleLogout = async () => {
+    const auth = getAuth();
     try {
-      await signOut(getAuth());
+      await signOut(auth);
       setCurrentUser(null);
       setIsAdmin(false);
     } catch (error) {
-      console.error("Error signing out: ", error);
+      console.error("Error signing out:", error);
     }
   };
 
   return (
     <nav className="bg-sweetPink shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 md:px-12 py-7 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-berryPink tracking-wide">
-          🍰 SweetDelights
-        </h1>
+        <h1 className="text-2xl font-bold text-berryPink tracking-wide">🍰 SweetDelights</h1>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-6 text-berryPink font-medium items-center">
@@ -80,15 +75,17 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {/* Cart Icon */}
-          <Link to="/cart" className="relative">
-            <ShoppingCart size={24} />
-            {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {cartCount}
-              </span>
-            )}
-          </Link>
+          {/* Cart Icon - Only show when user is logged in */}
+          {currentUser && !isAdmin && (
+            <Link to="/cart" className="relative">
+              <ShoppingCart size={24} />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          )}
 
           {/* Auth Icons */}
           {currentUser ? (
@@ -102,7 +99,6 @@ export default function Navbar() {
                   <User size={24} />
                 </Link>
               )}
-
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-1 hover:text-berryPink transition"
@@ -143,13 +139,16 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <Link
-            to="/cart"
-            className="flex items-center gap-1 hover:text-berryPink"
-            onClick={() => setIsOpen(false)}
-          >
-            <ShoppingCart size={18} /> Cart
-          </Link>
+          {/* Cart Icon for Mobile (only when user is logged in) */}
+          {currentUser && !isAdmin && (
+            <Link
+              to="/cart"
+              className="flex items-center gap-1 hover:text-berryPink"
+              onClick={() => setIsOpen(false)}
+            >
+              <ShoppingCart size={18} /> Cart ({cartCount})
+            </Link>
+          )}
 
           {currentUser ? (
             <>
