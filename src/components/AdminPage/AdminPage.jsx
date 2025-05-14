@@ -4,6 +4,7 @@ import {
   AlertCircle, Cake, Percent, FileText, MessageCircle
 } from 'lucide-react';
 import { auth } from '../../firebase/firebase.init'; // Adjust path to your Firebase setup
+import Dashboard from './Dashboard';
 
 const tabs = [
   { id: 'overview', label: 'Dashboard Overview', icon: <LayoutDashboard size={18} /> },
@@ -31,7 +32,7 @@ export default function AdminDashboard() {
   const renderTabContent = () => {
     switch (activeTab) {
       case 'overview':
-        return <div><h2 className="text-xl font-semibold mb-4">Dashboard Overview</h2></div>;
+        return <div><Dashboard/></div>;
       case 'products':
         return <div><h2 className="text-xl font-semibold mb-4">Product Management</h2></div>;
       case 'orders':
