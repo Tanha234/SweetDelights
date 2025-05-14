@@ -6,6 +6,7 @@ import {
 import { auth } from '../../firebase/firebase.init'; // Adjust path to your Firebase setup
 import Dashboard from './Dashboard';
 import CustomersPage from './CustomersPage';
+import OrderPage from './OrderPage';
 
 const tabs = [
   { id: 'overview', label: 'Dashboard Overview', icon: <LayoutDashboard size={18} /> },
@@ -37,7 +38,7 @@ export default function AdminDashboard() {
       case 'products':
         return <div><h2 className="text-xl font-semibold mb-4">Product Management</h2></div>;
       case 'orders':
-        return <div><h2 className="text-xl font-semibold mb-4">Order Management</h2></div>;
+        return <div><OrderPage/></div>;
       case 'customers':
         return <div><CustomersPage/></div>;
       case 'inventory':
