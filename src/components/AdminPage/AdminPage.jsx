@@ -20,7 +20,7 @@ const tabs = [
   { id: 'custom', label: 'Custom Cake Orders', icon: <Cake size={18} /> },
 
 
-  { id: 'reviews', label: 'Reviews & Feedback', icon: <MessageCircle size={18} /> },
+  // { id: 'reviews', label: 'Reviews & Feedback', icon: <MessageCircle size={18} /> },
 ];
 
 export default function AdminDashboard() {
@@ -49,8 +49,8 @@ export default function AdminDashboard() {
         return <div><CustomCakeOrders/></div>;
     
      
-      case 'reviews':
-        return <div><h2 className="text-xl font-semibold mb-4">Reviews & Feedback</h2></div>;
+      // case 'reviews':
+      //   return <div><h2 className="text-xl font-semibold mb-4">Reviews & Feedback</h2></div>;
       default:
         return null;
     }
