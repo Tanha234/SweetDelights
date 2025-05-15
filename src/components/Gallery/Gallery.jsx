@@ -63,7 +63,7 @@ export default function CakeGallery() {
 
   return (
     <div className="py-12 px-4 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-8">Cake Gallery</h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-berryPink">Cake Gallery</h2>
 
       {/* Tabs */}
       <div className="flex justify-center flex-wrap gap-4 mb-10">

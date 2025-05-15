@@ -22,6 +22,7 @@ import CakeEntryForm from './components/AdminPage/CakeEntryForm';
 import EditCakePage from './components/AdminPage/EditCakePage';
 import CustomCakeOrderForm from './components/CakeCard/CustomCakeOrderForm';
 import CakeGallery from './components/Gallery/Gallery';
+import ContactUs from './components/ConatctUs/ContactUs';
 
 
 // Define routes
@@ -81,6 +82,11 @@ const router = createBrowserRouter([
       {
         path: "/cakes/edit/:id",
         element: <EditCakePage/>,
+       
+      },
+      {
+        path: "/contact",
+        element: <ContactUs/>,
        
       },
       {
