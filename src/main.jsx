@@ -5,6 +5,7 @@ import App from './App.jsx';
 import { createBrowserRouter, RouterProvider, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Root from './Root';
+import "sweetalert2/dist/sweetalert2.min.css";
 
 import AdminRoute from './components/AdminRoute/AdminRoute';
 import AdminPage from './components/AdminPage/AdminPage';
@@ -17,6 +18,8 @@ import CartPage from './components/CartPage/CartPage';
 import CheckoutPage from './components/CartPage/CheckoutPage';
 import BuyNowPage from './components/CartPage/BuyNowPage';
 import ProfilePage from './components/Profile/Profile';
+import CakeEntryForm from './components/AdminPage/CakeEntryForm';
+import EditCakePage from './components/AdminPage/EditCakePage';
 
 
 // Define routes
@@ -60,6 +63,15 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage/>,
+      },
+      {
+        path: "/addCake",
+        element: <CakeEntryForm/>,
+      },
+      {
+        path: "/cakes/edit/:id",
+        element: <EditCakePage/>,
+       
       },
       {
         path: "/login",

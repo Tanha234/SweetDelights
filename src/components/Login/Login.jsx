@@ -17,7 +17,7 @@ const Login = () => {
       if (idTokenResult.claims.role === 'admin') {
         navigate('/admin');
       } else {
-        navigate('/user-dashboard');
+        navigate('/profile');
       }
     } catch (error) {
       alert(error.message);

@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 import CustomersPage from './CustomersPage';
 import OrderPage from './OrderPage';
 import CakeEntryForm from './CakeEntryForm';
+import OrderManagemnetPage from './OrderManagemnetPage';
 
 const tabs = [
   { id: 'overview', label: 'Dashboard Overview', icon: <LayoutDashboard size={18} /> },
@@ -37,7 +38,7 @@ export default function AdminDashboard() {
       case 'overview':
         return <div><Dashboard/></div>;
       case 'products':
-        return <div><CakeEntryForm/></div>;
+        return <div><OrderManagemnetPage/></div>;
       case 'orders':
         return <div><OrderPage/></div>;
       case 'customers':

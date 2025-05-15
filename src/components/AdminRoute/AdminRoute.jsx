@@ -10,9 +10,9 @@ const AdminRoute = ({ children, ...rest }) => {
   }
 
   if (userRole === 'admin') {
-    alert("You are an admin!"); // Show an alert if the user is an admin
+
   } else if (userRole === 'user') {
-    alert("You are a regular user!"); // Show an alert if the user is a regular user
+   
   }
 
   return (
