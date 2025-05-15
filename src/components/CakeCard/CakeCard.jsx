@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const ShopPage = () => {
   const [cakes, setCakes] = useState([]);
@@ -7,6 +9,7 @@ const ShopPage = () => {
   const [filteredCakes, setFilteredCakes] = useState([]);
   const [priceRange, setPriceRange] = useState(75);
   const [sortOrder, setSortOrder] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/data.json')
@@ -112,24 +115,33 @@ const ShopPage = () => {
 
         {/* Product Grid */}
         <section className="md:col-span-3">
-          <div className="flex justify-between items-center mb-8">
-            <input
-              type="text"
-              placeholder="Search cakes..."
-              className="p-3 border border-gray-400 text-gray-900 rounded-md w-1/2"
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-            />
-            <select
-              className="border p-2 rounded-md"
-              value={sortOrder}
-              onChange={e => setSortOrder(e.target.value)}
-            >
-              <option value="">Sort by</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-            </select>
-          </div>
+        <div className="flex justify-between items-center mb-8">
+  <input
+    type="text"
+    placeholder="Search cakes..."
+    className="p-3 border border-gray-400 text-gray-900 rounded-md w-1/2"
+    value={searchTerm}
+    onChange={e => setSearchTerm(e.target.value)}
+  />
+  <div className="flex items-center gap-4">
+    <select
+      className="border p-2 rounded-md"
+      value={sortOrder}
+      onChange={e => setSortOrder(e.target.value)}
+    >
+      <option value="">Sort by</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+    </select>
+    <button
+      className="ml-4 bg-berryPink text-white font-semibold py-2 px-4 rounded-lg hover:bg-pink-600 transition"
+      onClick={() => navigate('/addCustomCake')}
+    >
+      Order Custom Cake
+    </button>
+  </div>
+</div>
+
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCakes.map((cake, idx) => {

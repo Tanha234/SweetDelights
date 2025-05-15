@@ -9,6 +9,7 @@ import CustomersPage from './CustomersPage';
 import OrderPage from './OrderPage';
 import CakeEntryForm from './CakeEntryForm';
 import OrderManagemnetPage from './OrderManagemnetPage';
+import CustomCakeOrders from './CustomCakeOrders';
 
 const tabs = [
   { id: 'overview', label: 'Dashboard Overview', icon: <LayoutDashboard size={18} /> },
@@ -17,7 +18,7 @@ const tabs = [
   { id: 'customers', label: 'Customer Management', icon: <Users size={18} /> },
  
   { id: 'custom', label: 'Custom Cake Orders', icon: <Cake size={18} /> },
-  { id: 'promotions', label: 'Promotions & Discounts', icon: <Percent size={18} /> },
+
 
   { id: 'reviews', label: 'Reviews & Feedback', icon: <MessageCircle size={18} /> },
 ];
@@ -45,9 +46,8 @@ export default function AdminDashboard() {
         return <div><CustomersPage/></div>;
     
       case 'custom':
-        return <div><h2 className="text-xl font-semibold mb-4">Custom Cake Orders</h2></div>;
-      case 'promotions':
-        return <div><h2 className="text-xl font-semibold mb-4">Promotions & Discounts</h2></div>;
+        return <div><CustomCakeOrders/></div>;
+    
      
       case 'reviews':
         return <div><h2 className="text-xl font-semibold mb-4">Reviews & Feedback</h2></div>;

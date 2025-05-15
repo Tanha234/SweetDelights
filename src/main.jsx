@@ -20,6 +20,7 @@ import BuyNowPage from './components/CartPage/BuyNowPage';
 import ProfilePage from './components/Profile/Profile';
 import CakeEntryForm from './components/AdminPage/CakeEntryForm';
 import EditCakePage from './components/AdminPage/EditCakePage';
+import CustomCakeOrderForm from './components/CakeCard/CustomCakeOrderForm';
 
 
 // Define routes
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/addCake",
         element: <CakeEntryForm/>,
+      },
+      {
+        path: "/addCustomCake",
+        element: <CustomCakeOrderForm/>,
       },
       {
         path: "/cakes/edit/:id",
