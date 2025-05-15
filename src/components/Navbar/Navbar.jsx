@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, LogIn, ShoppingCart, User, UserCog, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut, getIdTokenResult } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,7 @@ export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const navLinks = ["Home", "About", "Cakes", "Gallery", "Contact"];
+  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
@@ -53,10 +55,12 @@ export default function Navbar() {
       await signOut(auth);
       setCurrentUser(null);
       setIsAdmin(false);
+      navigate("/login"); 
     } catch (error) {
       console.error("Error signing out:", error);
     }
   };
+  
 
   return (
     <nav className="bg-sweetPink shadow-md sticky top-0 z-50">
