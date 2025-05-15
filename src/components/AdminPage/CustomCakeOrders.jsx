@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
-const statusOptions = ['Pending', 'Confirmed', 'In Progress', 'Completed', 'Canceled'];
+const statusOptions = [
+  { label: 'Pending', color: 'bg-yellow-300 text-yellow-800' },
+  { label: 'Confirmed', color: 'bg-blue-300 text-blue-800' },
+  { label: 'In Progress', color: 'bg-purple-300 text-purple-800' },
+  { label: 'Completed', color: 'bg-green-300 text-green-800' },
+  { label: 'Canceled', color: 'bg-red-300 text-red-800' },
+];
 
 const CustomCakeOrdersTable = () => {
   const [orders, setOrders] = useState([]);
@@ -33,23 +40,36 @@ const CustomCakeOrdersTable = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
       });
-      
-      
 
       if (!res.ok) throw new Error('Failed to update status');
 
       const updatedOrder = await res.json();
 
       setOrders((prev) =>
-        prev.map((order) =>
-          order._id === orderId ? updatedOrder : order
-        )
+        prev.map((order) => (order._id === orderId ? updatedOrder : order))
       );
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Status Updated',
+        text: `Order status changed to "${newStatus}"`,
+        timer: 1500,
+        showConfirmButton: false,
+      });
     } catch (err) {
-      alert('Error updating status: ' + err.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error updating status: ' + err.message,
+      });
     } finally {
       setUpdatingOrderId(null);
     }
+  };
+
+  const getStatusClasses = (status) => {
+    const found = statusOptions.find((option) => option.label === status);
+    return found ? found.color : '';
   };
 
   if (loading) return <div className="text-center mt-10">Loading orders...</div>;
@@ -64,7 +84,6 @@ const CustomCakeOrdersTable = () => {
           <tr>
             <th className="px-4 py-2 border">Image</th>
             <th className="px-4 py-2 border">Name</th>
-         
             <th className="px-4 py-2 border">Phone</th>
             <th className="px-4 py-2 border">Flavor</th>
             <th className="px-4 py-2 border">Size</th>
@@ -88,14 +107,16 @@ const CustomCakeOrdersTable = () => {
                 )}
               </td>
               <td className="border px-4 py-2">{order.name}</td>
-         
               <td className="border px-4 py-2">{order.phone}</td>
               <td className="border px-4 py-2">{order.cakeFlavor}</td>
               <td className="border px-4 py-2">{order.cakeSize}</td>
               <td className="border px-4 py-2">
                 {new Date(order.deliveryDate).toLocaleDateString()}
               </td>
-              <td className="border px-4 py-2 italic max-w-xs truncate" title={order.message}>
+              <td
+                className="border px-4 py-2 italic max-w-xs truncate"
+                title={order.message}
+              >
                 {order.message || '—'}
               </td>
               <td className="border px-4 py-2">
@@ -103,13 +124,19 @@ const CustomCakeOrdersTable = () => {
                   value={order.status || 'Pending'}
                   onChange={(e) => handleStatusChange(order._id, e.target.value)}
                   disabled={updatingOrderId === order._id}
-                  className={`border rounded px-2 py-1 ${
+                  className={`border rounded px-2 py-1 font-semibold ${
+                    getStatusClasses(order.status || 'Pending')
+                  } ${
                     updatingOrderId === order._id ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
-                  {statusOptions.map((status) => (
-                    <option key={status} value={status}>
-                      {status}
+                  {statusOptions.map(({ label }) => (
+                    <option
+                      key={label}
+                      value={label}
+                      className={getStatusClasses(label)}
+                    >
+                      {label}
                     </option>
                   ))}
                 </select>
